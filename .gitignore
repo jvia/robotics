@@ -1,4 +1,6 @@
 *.class
+build/
+dist/
 
 # Package Files #
 *.jar
@@ -7,9 +9,11 @@
 
 # Intellij IDE files
 .idea/
+*.iml
 
 # Netbeans IDE files
 
 # ROS java files
 .classpath*
 .project*
+ros.properties
