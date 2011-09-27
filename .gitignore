@@ -1,0 +1,15 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Intellij IDE files
+.idea/
+
+# Netbeans IDE files
+
+# ROS java files
+.classpath*
+.project*
