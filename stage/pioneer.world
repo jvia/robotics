@@ -1,0 +1,87 @@
+# Pioneer world. Based on many, many sources.
+# Date: 30 December 2010
+# Author: Jeremiah M. Via
+
+include "pioneer.inc"
+include "map.inc"
+include "hokuyo.inc"
+
+
+paused 0
+
+# Low resolution gives fast raytracing. 
+# Set this only as small as you need 
+# for your application.
+resolution 0.5
+
+# This is very helpful if you have multiple CPUs.
+# Rule of thumb: value = number of CPU cores.
+# NOTE: This is experimental so if nothing is 
+# working, try setting it back to 1.
+threads 4
+
+# Configure the GUI window
+window
+(
+  size [ 700 700 ] 
+  
+  # Camera options
+  center [ 0 16 ]
+  rotate [ 0.000   -1.560 ]
+  scale  50
+
+  # Perspective camera options
+  pcam_loc   [ 0 -4 2 ]
+  pcam_angle [ 70 0 ]
+
+  # GUI options:  1=on 0=off
+  show_data        1      
+  show_flags       1     
+  show_blocks      1     
+  show_clock       1      
+  show_footprints  0     
+  show_grid        1    
+  show_trailarrows 0
+  show_trailrise   0
+  show_trailfast   0
+  show_occupancy   0   
+  pcam_on          0 
+  screenshots      0
+
+
+)
+
+# Load an environment bitmap
+floorplan
+( 
+  name "LE CAVE!!!"
+  size [100.000 100.000 0.800]
+  pose [0 0 0 0]
+  bitmap "lgfloor.pgm"  
+)
+
+
+# Defines the pioneer model to use in 
+# the simulation.
+define pioneer pioneer2dx_front_sonar
+(		  
+  color "random"
+  # we need this for the sonar for some reason    
+  ctrl "pioneer_flocking" 
+  fiducial_return 1
+  fiducial()
+  hokuyolaser( color "random" )
+
+  gripper
+  (     
+    pose [ 0.27 0 -0.2 0]
+    paddle_size  [ 0.66 0.0.1 0.4 ] 
+    paddle_state [ "open" "up" ]    # open/closed up/down
+    autosnatch 0                    # if 1, will close automatically
+                                    # when break beams are detected
+  )
+  
+)
+
+# Add the robot to the simulation
+pioneer( pose [ 0 0 0 -81.850 ] )
