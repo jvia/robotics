@@ -2,40 +2,55 @@
 <project name="." default="default">
 
   <property file="ros.properties" />
-  <property name="build" location="build" />
 
-  <property name="dist" location="dist" />
-  <property name="build" location="build" />
-  <property name="src" location="src" />
-  
+  <include file="dependencies.xml" />
+
+  <property name="src.main" location="src/main" />
+  <property name="build.main" location="target/classes" />
+
+  <property name="dist" location="target" />
+  <property name="javac-source" value="1.6" />
+  <property name="javac-target" value="1.6" />
+  <property name="debuglevel" value="source,lines,vars" />
+  <property name="jar" location="${ros.artifact.built}" />
+
   <path id="classpath">
     <pathelement path="${ros.compile.classpath}" />
   </path>
-  
-  <echo message="The class path is ${toString:classpath}" />
 
-  <target name="default" depends="init, compile" />
+  <path id="test.classpath">
+    <path refid="classpath" />
+    <pathelement path="${build.main}" />
+    <pathelement path="${build.test}" />
+    <pathelement path="${ros.test.classpath}" />
+  </path>
+
+  <target name="default" depends="init, compile, jar" />
 
   <target name="init">
-    <!--<fail unless="ros.classpath" message="ros.properties is missing.  Please type 'rosmake' first "/>-->
-    <mkdir dir="${build}" />
+    <fail unless="ros.compile.classpath" message="ros.properties is missing. Run 'rosmake rosjava' first."/>
+    <mkdir dir="${build.main}" />
     <mkdir dir="${dist}" />
   </target>
 
   <target name="compile" depends="init">
-
-    <javac destdir="${build}" includeantruntime="false">
+    <javac debug="true" debuglevel="${debuglevel}" destdir="${build.main}" source="${javac-source}"
+        target="${javac-target}" includeantruntime="false">
       <classpath refid="classpath" />
-      <src path="${src}" />
+      <src path="${src.main}" />
     </javac>
   </target>
 
-  <target name="clean">
-    <delete dir="${build}" />
-    <delete dir="${dist}" />
+  <target name="jar" depends="compile">
+    <echo message="Hello, world"/>
+    <jar destfile="${jar}">
+      <fileset dir="${build.main}" />
+    </jar>
   </target>
 
-  <!-- required entry point -->
-  <target name="test" />
-
+  <target name="clean">
+    <delete dir="${build.main}" />
+    <delete dir="${dist}" />
+  </target>
 </project>
+
