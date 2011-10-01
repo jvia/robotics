@@ -65,12 +65,12 @@ public class Mover implements NodeMain {
         if (message.ranges[message.ranges.length / 2] > MIN_DIST) {
             Twist cmd = new Twist();
             cmd.linear.x = 0.5; // Forward
-            System.out.printf("go: %.2f meters", message.ranges[message.ranges.length / 2]);
+            System.out.printf("go: %.2f meters\n", message.ranges[message.ranges.length / 2]);
             pub.publish(cmd);
         } else {
             Twist cmd = new Twist();
-            cmd.linear.x = 0.0; // Forward
-            System.out.printf("stop: %.2f meters", message.ranges[message.ranges.length / 2]);
+            cmd.angular.z = 0.5; // Forward
+            System.out.printf("stop: %.2f meters\n", message.ranges[message.ranges.length / 2]);
             pub.publish(cmd);
         }
     }
