@@ -1,0 +1,26 @@
+<package>
+  <description brief="robotics">
+
+     robotics
+
+  </description>
+  <author>Jeremiah Via</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/robotics</url>
+  <depend package="rosjava"/>
+  <depend package="std_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="nav_msgs"/>
+  <depend package="tf"/>
+  <depend package="p2os_driver"/>  
+
+  <export>
+    <rosjava-src location="src/main" />
+    <rosjava-pathelement location="target" groupId="bham" artifactId="ir.move_forward" version="0.0.0" built="true" />
+  </export>
+
+</package>
+
+

@@ -1,0 +1,29 @@
+<package>
+  <description brief="explore">
+
+     explore
+
+  </description>
+
+  <author>Jeremiah Via, Jan Lavendar, Antony Kinnear, Ishmail Alsahar</author>
+
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/explore</url>
+
+  <depend package="rosjava"/>
+  <depend package="std_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="nav_msgs"/>
+  <depend package="tf"/>
+  <depend package="p2os_driver"/>  
+
+  <export>
+    <rosjava-src location="src/main" />
+    <rosjava-pathelement location="target" groupId="ir" artifactId="ir.explore" version="0.0.0" built="true" />
+  </export>
+
+</package>
+
+

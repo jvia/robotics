@@ -1,0 +1,18 @@
+<stack>
+  <description brief="Code for our 2011 intelligent robotics class">
+    This stack contains code for the 2011 Intelligent Robotics class at
+    the University of Birmingham. The class had five exercises, each of 
+    which is represented as its own package in this stack.
+    </description>
+  <author>Maintained by Jeremiah Via, Athony Kinnear, Jan Lavendar, Ishmail Alsahar</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>https://github.com/jvia/robotics</url>
+  <depend stack="common_msgs" /> <!-- nav_msgs, geometry_msgs, sensor_msgs -->
+  <depend stack="geometry" /> <!-- tf -->
+  <depend stack="ros" />
+  <depend stack="ros_comm" /> <!-- std_msgs -->
+  <depend stack="rosjava_core" /> <!-- rosjava -->
+</stack>
+
+
